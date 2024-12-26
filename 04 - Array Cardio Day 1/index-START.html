@@ -38,28 +38,50 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-
+    const oldInventors = inventors.filter((inventor) => inventor.year >= 1500 && inventor.year <= 1599);
+    console.log('old inventors');
+    console.log(oldInventors);
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const inventorsFullNames = inventors.map((inventor) => inventor.first + " " + inventor.last);
+    console.log('inventor full names');
+    console.log(inventorsFullNames);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+    const sortedInventors = inventors.sort((a, b) => a.year - b.year);
+    console.log('sorted inventors');
+    console.log(sortedInventors);
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+    const cumulativeAge = inventors.reduce((total, inventor) => total + (inventor.passed - inventor.year), 0);
+    console.log('cumulative age');
+    console.log(cumulativeAge);
     // 5. Sort the inventors by years lived
-
+    const inventorsByLivedYears = inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
+    console.log('inventors by years lived');
+    console.log(inventorsByLivedYears);
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
+
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const peopleSorted = people.sort().map((person) => person.split(", ").reverse().join(" "))
+    console.log('poeple sorted alphabetically by last name');
+    console.log(peopleSorted);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const summedInstances = data.reduce((acc, current) => {
+      acc[current] = current in acc ? acc[current] + 1 : 1;
+      return acc;
+    }, {});
+    console.log('sum of instances');
+    console.log(summedInstances);
+
 
   </script>
 </body>
